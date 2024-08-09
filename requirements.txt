@@ -1,4 +1,4 @@
-gunicorn
+
 aiohttp
 bs4
 cfscrape
