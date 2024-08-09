@@ -4,7 +4,10 @@ from pyrogram.filters import command, user
 from os import path as ospath, execl
 from asyncio import create_subprocess_exec
 from sys import executable
-
+import asyncio
+import aiohttp
+import traceback
+logging = LOGGER
 
 @Bypass.on_message(command('restart') & user(Config.OWNER_ID))
 async def restart(client, message):
@@ -22,6 +25,24 @@ async def restart():
             await Bypass.edit_message_text(chat_id=chat_id, message_id=msg_id, text="<i>Restarted !</i>")
         except Exception as e:
             LOGGER.error(e)
+    asyncio.create_task(ping_server())
+
+async def ping_server():
+    sleep_time = 40#300
+    url = "https://hkmirzamim.onrender.com"
+    while True:
+        await asyncio.sleep(sleep_time)
+        try:
+            async with aiohttp.ClientSession(
+                timeout=aiohttp.ClientTimeout(total=10)
+            ) as session:
+                async with session.get(url) as resp:
+                    print(resp.status)
+                    #logging.info("Pinged server with response: {}".format(resp.status))
+        except TimeoutError:
+            logging.warning("Couldn't connect to the site URL..!")
+        except Exception:
+            traceback.print_exc()
 
 Bypass.start()
 LOGGER.info('FZ Bot Started!')
