@@ -38,7 +38,8 @@ async def direct_link_checker(link, onlylink=False):
         blink = await try2link(link)
     elif bool(match(r"https?:\/\/pearl.hidden2history\.\S+", link)):
         blink = await transcript(link, "https://hidden2history.in/", "https://link.cartoontamilan.in/", 9)
-    
+    elif bool(match(r"https?:\/\/primeurl\.\S+", link)):
+        blink = await transcript(link, "https://go.primeurl.in/", "https://earnbox.bgmi32bitapk.in/", 9)
     elif bool(match(r"https?:\/\/ronylink\.\S+", link)):
         blink = await transcript(link, "https://go.ronylink.com/", "https://livejankari.com/", 9)
     elif bool(match(r"https?:\/\/gtlinks\.\S+", link)):
@@ -105,7 +106,7 @@ async def direct_link_checker(link, onlylink=False):
     elif bool(match(r"https?:\/\/.+\.tulinks\.\S+", link)):
         blink = await transcript(link, "https://go.tulinks.online", "https://tutelugu.co/", 8)
     elif bool(match(r"https?:\/\/(.+\.)?vipurl\.\S+", link)):
-        blink = await transcript(link, "https://count.vipurl.in/", "https://newbharatyojna.com/", 5)
+        blink = await transcript(link, "https://count.vipurl.in/", "https://myhindigk.com/", 5) #https://newbharatyojna.com/
     elif bool(match(r"https?:\/\/indyshare\.\S+", link)):
         blink = await transcript(link, "https://indyshare.net", "https://insurancewolrd.in/", 3.1)
     elif bool(match(r"https?:\/\/linkyearn\.\S+", link)):
